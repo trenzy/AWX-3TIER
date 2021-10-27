@@ -16,7 +16,6 @@
       password: "{{ password }}"
       tenant: "{{ tenant }}"
       description: "Tenant configured by Ansible AWX"
-      annotation: orchestrator:AWX
       validate_certs: no
       state: present
 
