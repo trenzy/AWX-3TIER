@@ -5,7 +5,7 @@
   connection: local
   gather_facts: no
   collections: 
-    - cisco.aci
+  - cisco.aci
   
   vars_files:
     - ./external_vars.yml
