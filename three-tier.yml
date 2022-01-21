@@ -8,7 +8,7 @@
   - cisco.aci
   
   vars_files:
-    - ./external_vars.yml
+  - ./external_vars.yml
 
   tasks:
   - name: Create Ansible Tenant
