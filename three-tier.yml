@@ -63,16 +63,16 @@
       validate_certs: no 
       state: present 
       
-   - name: Create ansible-AP 
-     aci_ap: 
-       hostname: "{{ inventory_hostname }}" 
-       username: "{{ username }}" 
-       password: "{{ password }}" 
-       tenant: "Ansible" 
-       ap: "ansible-AP"
-       description: "app profile configured by Ansible"
-       validate_certs: no
-       state: present
+  - name: Create ansible-AP 
+    aci_ap: 
+      hostname: "{{ inventory_hostname }}" 
+      username: "{{ username }}" 
+      password: "{{ password }}" 
+      tenant: "Ansible" 
+      ap: "ansible-AP"
+      description: "app profile configured by Ansible"
+      validate_certs: no
+      state: present
 
   - name: Creating EPGs
     aci_epg:
