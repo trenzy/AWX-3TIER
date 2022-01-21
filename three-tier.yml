@@ -7,8 +7,8 @@
   collections: 
   - cisco.aci
   
-  vars_files:
-  - ./external_vars.yml
+  #vars_files:
+  #- ./external_vars.yml
 
   tasks:
   - name: Create Ansible Tenant
@@ -16,7 +16,8 @@
       hostname: "{{ inventory_hostname }}"
       username: "{{ username }}"
       password: "{{ password }}"
-      tenant: "{{ tenant }}"
+      tenant: "Ansible"
+      #tenant: "{{ tenant }}"
       description: "Tenant configured by Ansible AWX"
       validate_certs: no
       state: present
@@ -26,7 +27,8 @@
       hostname: "{{ inventory_hostname }}"
       username: "{{ username }}"
       password: "{{ password }}"
-      tenant: "{{ tenant }}"
+      #tenant: "{{ tenant }}"
+      tenant: "Ansible"
       vrf: "{{ vrf }}"
       description: "VRF configured by Ansible"
       validate_certs: no
@@ -37,13 +39,13 @@
       hostname: "{{ inventory_hostname }}"
       username: "{{ username }}"
       password: "{{ password }}"
-      tenant: "{{ tenant }}"
-      vrf: "{{ vrf }}"
-      bd: "{{ bd.name }}"
+      tenant: "Ansible"
+      vrf: "ansible-VRF"
+      bd: "ansible-BD"
       enable_routing: yes
-      arp_flooding: no
-      l2_unknown_unicast: proxy
-      description: "BD configured by Ansible"
+      arp_flooding: no 
+      l2_unknown_unicast: 
+      proxy description: "BD configured by Ansible" 
       validate_certs: no
       state: present
 
@@ -52,42 +54,42 @@
       hostname: "{{ inventory_hostname }}"
       username: "{{ username }}"
       password: "{{ password }}"
-      tenant: "{{ tenant }}"
-      bd: "{{ bd.name }}"
-      gateway: "{{ bd.ip }}"
-      mask: "{{ bd.mask }}"
+      tenant: "Ansible"
+      bd: "ansible-BD"
+      gateway: "10.255.255.1"
+      mask: "24"
       scope: "private"
       description: "BD subnet added by Ansible"
-      validate_certs: no
-      state: present
-
-  - name: Create ansible-AP
-    aci_ap:
-      hostname: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
-      tenant: "{{ tenant }}"
-      ap: "{{ app_profile }}"
-      description: "app profile configured by Ansible"
-      validate_certs: no
-      state: present
+      validate_certs: no 
+      state: present 
+      
+   - name: Create ansible-AP 
+     aci_ap: 
+       hostname: "{{ inventory_hostname }}" 
+       username: "{{ username }}" 
+       password: "{{ password }}" 
+       tenant: "Ansible" 
+       ap: "ansible-AP"
+       jdescription: "app profile configured by Ansible"
+       validate_certs: no
+       state: present
 
   - name: Creating EPGs
     aci_epg:
       hostname: "{{ inventory_hostname }}"
       username: "{{ username }}"
       password: "{{ password }}"
-      tenant: "{{ tenant }}"
-      ap: "{{ app_profile }}"
+      tenant: "Ansible"
+      ap: "ansible-AP"
       epg: "{{ item.epg }}"
-      bd: "{{ bd.name }}"
+      bd: "ansible-BD"
       description: "EPG configured by Ansible"
       validate_certs: no
       state: present
     loop:
-      - epg: "{{ epg1 }}"
-      - epg: "{{ epg2 }}"
-      - epg: "{{ epg3 }}"
+      - epg: "web"
+      - epg: "app"
+      - epg: "db"
 
   - name: Creating Contracts
     aci_contract:
