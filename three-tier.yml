@@ -57,7 +57,7 @@
       tenant: "Ansible"
       bd: "ansible-BD"
       gateway: "10.255.255.1"
-      mask: "24"
+      mask: 24
       scope: "private"
       description: "BD subnet added by Ansible"
       validate_certs: no 
