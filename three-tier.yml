@@ -70,7 +70,7 @@
        password: "{{ password }}" 
        tenant: "Ansible" 
        ap: "ansible-AP"
-       jdescription: "app profile configured by Ansible"
+       description: "app profile configured by Ansible"
        validate_certs: no
        state: present
 
@@ -98,14 +98,14 @@
       password: "{{ password }}"
       #contract: "{{ web_to_app_contract }}"
       contract: "{{ item.contract }}"
-      tenant: "{{ tenant }}"
+      tenant: "Ansible"
       scope: "context"
       description: "Contract created by Ansible"
       validate_certs: no
       state: present
     loop:
-      - contract: "{{ web_to_app_contract }}"
-      - contract: "{{ app_to_db_contract }}"
+      - contract: "web_to_app_contract"
+      - contract: "app_to_db_contract"
 
   - name: Add Filters
     aci_filter:
@@ -114,13 +114,13 @@
       password: "{{ password }}"
       #filter: "{{ http_filter }}"
       filter: "{{ item.filter }}"
-      tenant: "{{ tenant }}"
+      tenant: "Ansible"
       description: "Filter created by Ansible"
       validate_certs: no
       state: present
     loop:
-      - filter: "{{ http_filter }}"
-      - filter: "{{ db_filter }}"
+      - filter: "http_filter" 
+      - filter: "db_filter"
 
   - name: Add Port 80 and 1433 to Filter entries
     aci_filter_entry:
