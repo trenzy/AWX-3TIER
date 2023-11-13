@@ -2,8 +2,8 @@
   - name: Creating ansible-BD
     cisco.aci.aci_bd:
       hostname: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
+      username: '{{ lookup("env", "ANSIBLE_NET_USERNAME") }}'
+      password: '{{ lookup("env", "ANSIBLE_NET_PASSWORD") }}'
       tenant: "{{ tenant }}"
       vrf: "{{ vrf }}"
       bd: "{{ bd_name }}"

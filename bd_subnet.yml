@@ -2,8 +2,8 @@
   - name: Creating ansible-BD Subnet
     cisco.aci.aci_bd_subnet:
       hostname: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
+      username: '{{ lookup("env", "ANSIBLE_NET_USERNAME") }}'
+      password: '{{ lookup("env", "ANSIBLE_NET_PASSWORD") }}'
       tenant: "{{ tenant }}"
       bd: "{{ bd_name }}"
       gateway: "{{ gw }}"

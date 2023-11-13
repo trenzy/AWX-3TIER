@@ -2,8 +2,8 @@
   - name: Create ansible-VRF
     cisco.aci.aci_vrf:
       hostname: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
+      username: '{{ lookup("env", "ANSIBLE_NET_USERNAME") }}'
+      password: '{{ lookup("env", "ANSIBLE_NET_PASSWORD") }}'
       tenant: "{{ tenant }}"
       vrf: "{{ vrf }}"
       preferred_group: "{{ vrf_pg }}"

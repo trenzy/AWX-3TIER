@@ -2,8 +2,8 @@
   - name: Create ansible-AP 
     cisco.aci.aci_ap: 
       hostname: "{{ inventory_hostname }}" 
-      username: "{{ username }}" 
-      password: "{{ password }}" 
+      username: '{{ lookup("env", "ANSIBLE_NET_USERNAME") }}'
+      password: '{{ lookup("env", "ANSIBLE_NET_PASSWORD") }}'
       tenant: "{{ tenant }}"
       ap: "{{ ap }}"
       description: "app profile configured by AWX"
