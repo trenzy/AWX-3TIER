@@ -1,0 +1,14 @@
+---
+  - name: Creating EPGs
+    cisco.aci.aci_epg:
+      hostname: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      tenant: "{{ tenant }}"
+      ap: "{{ ap }}"
+      epg: "{{ epg }}"
+      bd: "{{ bd_name }}"
+      preferred_group: "{{ preferred_group }}"
+      description: "EPG configured by AWX"
+      validate_certs: no
+      state: present

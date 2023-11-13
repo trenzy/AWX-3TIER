@@ -1,0 +1,10 @@
+---
+  - name: Create Ansible Tenant
+    cisco.aci.aci_tenant:
+      hostname: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      tenant: "{{ tenant }}"
+      description: "Tenant configured by AWX"
+      validate_certs: no
+      state: present

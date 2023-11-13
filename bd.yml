@@ -1,0 +1,15 @@
+---
+  - name: Creating ansible-BD
+    cisco.aci.aci_bd:
+      hostname: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      tenant: "{{ tenant }}"
+      vrf: "{{ vrf }}"
+      bd: "{{ bd_name }}"
+      enable_routing: yes
+      arp_flooding: no 
+      l2_unknown_unicast: flood 
+      description: "BD configured by AWX" 
+      validate_certs: no
+      state: present

@@ -1,0 +1,33 @@
+---
+- name: Configure Playbooks to configure Tenant objects
+  hosts: all
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ./external_vars.yml
+
+  tasks:
+  - name: Create a Tenant
+    ansible.builtin.include_tasks:
+      file: tenant.yml
+
+  - name: Create a VRF
+    ansible.builtin.include_tasks:
+      file: vrf.yml
+
+  - name: Create a Bridge domain
+    ansible.builtin.include_tasks:
+      file: bd.yml
+
+  - name: Create a Bridge domain Subnet
+    ansible.builtin.include_tasks:
+      file: bd_subnet.yml
+
+  - name: Create an Application Profile
+    ansible.builtin.include_tasks:
+      file: ap.yml
+
+  - name: Create an End Point Group
+    ansible.builtin.include_tasks:
+      file: epg.yml

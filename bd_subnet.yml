@@ -1,0 +1,14 @@
+---
+  - name: Creating ansible-BD Subnet
+    cisco.aci.aci_bd_subnet:
+      hostname: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      tenant: "{{ tenant }}"
+      bd: "{{ bd_name }}"
+      gateway: "{{ gw }}"
+      mask: "{{ mask }}"
+      scope: "{{ scope }}"
+      description: "BD subnet added by AWX"
+      validate_certs: no 
+      state: present

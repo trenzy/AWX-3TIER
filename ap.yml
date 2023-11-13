@@ -1,0 +1,11 @@
+---
+  - name: Create ansible-AP 
+    cisco.aci.aci_ap: 
+      hostname: "{{ inventory_hostname }}" 
+      username: "{{ username }}" 
+      password: "{{ password }}" 
+      tenant: "{{ tenant }}"
+      ap: "{{ ap }}"
+      description: "app profile configured by AWX"
+      validate_certs: no
+      state: present

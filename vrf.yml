@@ -1,0 +1,12 @@
+---
+  - name: Create ansible-VRF
+    cisco.aci.aci_vrf:
+      hostname: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      tenant: "{{ tenant }}"
+      vrf: "{{ vrf }}"
+      preferred_group: "{{ vrf_pg }}"
+      description: "VRF configured by AWX"
+      validate_certs: no
+      state: present
